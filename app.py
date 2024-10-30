@@ -22,6 +22,12 @@ def list_tasks():
 @app.get("/delete/<name>")
 def delete_tasks(name):
     g.pop(name)
+    return {"tasks": g.tasks}
+
+
+@app.get("/add/<name>")
+def add_task(name):
+    g.tasks.append(name)
     return {
         'tasks': g.tasks
     }
@@ -31,4 +37,4 @@ def home():
     return flask.send_file('static/index.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=8012)
