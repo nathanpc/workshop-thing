@@ -19,10 +19,13 @@ def list_tasks():
         'tasks': g.tasks
     }
 
-@app.get("/delete/<name>")
-def delete_tasks(name):
+@app.get("/delete/<id>/<name>")
+def delete_tasks(id, name):
     g.pop(name)
-    return {"tasks": g.tasks}
+    return {
+        "id": id,
+        "tasks": g.tasks
+        }
 
 
 @app.get("/add/<id>/<name>")
