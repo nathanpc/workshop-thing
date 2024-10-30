@@ -19,6 +19,13 @@ def list_tasks():
         'tasks': g.tasks
     }
 
+@app.get("/delete/<name>")
+def delete_tasks(name):
+    g.pop(name)
+    return {
+        'tasks': g.tasks
+    }
+
 @app.get('/')
 def home():
     return flask.send_file('static/index.html')
