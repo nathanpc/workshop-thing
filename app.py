@@ -25,10 +25,11 @@ def delete_tasks(name):
     return {"tasks": g.tasks}
 
 
-@app.get("/add/<name>")
-def add_task(name):
+@app.get("/add/<id>/<name>")
+def add_task(id, name):
     g.tasks.append(name)
     return {
+        'id': id,
         'tasks': g.tasks
     }
 
