@@ -19,6 +19,13 @@ def list_tasks():
         'tasks': g.tasks
     }
 
+@app.get("/add/<name>")
+def add_task(name):
+    g.tasks.append(name)
+    return {
+        'tasks': g.tasks
+    }
+
 @app.get('/')
 def home():
     return flask.send_file('static/index.html')
