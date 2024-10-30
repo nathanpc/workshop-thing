@@ -1,4 +1,5 @@
 import flask
+from flask import g
 
 app = flask.Flask(
     __name__,
@@ -9,6 +10,14 @@ app = flask.Flask(
 @app.get("/test")
 def test_get():
     return "Hello workshop!"
+
+@app.get("/tasks")
+def list_tasks():
+    if "tasks" not in g:
+        g.tasks = ["Task 1", "Task 2"]
+    return {
+        'tasks': g.tasks
+    }
 
 @app.get('/')
 def home():
