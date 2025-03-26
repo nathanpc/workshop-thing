@@ -1,2 +1,2 @@
 print("Git workshop!")
-print("ඞ")
+print("Awesome feature")
